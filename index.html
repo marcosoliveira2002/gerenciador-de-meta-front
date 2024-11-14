@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+  <button class="btn-sair" onclick="sair()">Sair</button>
+  <div id="logado"></div>
+  <div class="container">
+
+    <div class="card">
+      <h2>Cadastrar Nova Meta</h2>
+      <form id="formCadastrarMeta">
+        <div class="label-float">
+          <label for="titulo">Título</label>
+          <input type="text" id="titulo" name="titulo" placeholder=" " required />
+        </div>
+        <div class="label-float">
+          <label for="descricao">Descrição</label>
+          <textarea id="descricao" name="descricao" placeholder=" " required></textarea>
+        </div>
+        <button type="submit">Cadastrar Meta</button>
+      </form>
+      <div id="msgError" class="msg-error" style="display:none"></div>
+      <div id="msgSuccess" class="msg-success" style="display:none"></div>
+    </div>
+
+
+    <<div class="card">
+      <h2>Listar Metas</h2>
+      <div class="label-float">
+        <label for="status">Filtrar por Status</label>
+        <select id="status" name="status">
+          <option value="P">Pendentes</option>
+          <option value="C">Concluídas</option>
+        </select>
+      </div>
+      <button onclick="listarMetas()">Buscar Metas</button>
+    
+      <div id="listaMetas" class="lista-metas"></div>
+    </div>
+    
+
+    <div id="editModal" class="modal" style="display: none;">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Editar Meta</h2>
+        <form id="formEditarMeta">
+          <input type="hidden" id="metaId" />
+          <div class="label-float">
+            <label for="editTitulo">Título</label>
+            <input type="text" id="editTitulo" placeholder=" " required />
+          </div>
+          <div class="label-float">
+            <label for="editDescricao">Descrição</label>
+            <textarea id="editDescricao"  placeholder=" " required></textarea>
+          </div>
+          <button type="submit">Salvar Alterações</button>
+        </form>
+        <div id="editMsgError" class="msg-error" style="display:none"></div>
+        <div id="editMsgSuccess" class="msg-success" style="display:none"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="confirmDeleteModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeConfirmModal()">&times;</span>
+      <h2>Confirmar Deleção</h2>
+      <p>Tem certeza que deseja deletar esta meta?</p>
+      <input type="hidden" id="deleteMetaId" placeholder=" ">
+      <button onclick="deleteMeta()">Confirmar</button>
+      <button onclick="closeConfirmModal()">Cancelar</button>
+    </div>
+  </div>
+
+  <script src="assets/js/index.js"></script>
+</body>
+
+</html>
